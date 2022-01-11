@@ -133,5 +133,23 @@ postContainer.innerHTML += `
 `
 }
 
+let like = document.querySelector(".like-button");
+let pollice = document.querySelector(".like-button__icon");
+let miPiace = document.querySelector(".like-button__label");
+
+
+for(let i=0; i < posts.length ; i++){
+
+    like.addEventListener('click', function() {
+
+        pollice.classList.add("like-button--liked");
+        miPiace.classList.add("like-button--liked");
+     
+    })
+     
+}
+
+
+
 
 
