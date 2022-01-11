@@ -126,6 +126,7 @@ postContainer.innerHTML += `
 `
 }
 
+let newArr = [];
 let like = document.querySelectorAll(".like-button");
 let pollice = document.querySelectorAll(".like-button__icon");
 let miPiace = document.querySelectorAll(".like-button__label");
@@ -138,12 +139,13 @@ for(let i=0; i < like.length ; i++){
         pollice[i].classList.add("like-button--liked");
         miPiace[i].classList.add("like-button--liked");
         counter[i].innerHTML = (parseInt((posts[i].likes+1)));
+
+        newArr.push(posts[i].id);
      
+        console.log(newArr);
     })
      
 }
-
-
 
 
 
