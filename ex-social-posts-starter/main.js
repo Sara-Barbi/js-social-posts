@@ -86,12 +86,6 @@ const posts = [
 
 postContainer = document.getElementById("container");
 
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
-
-today = mm + '/' + dd + '/' + yyyy;
 
 for(let i=0; i<posts.length; i++){
 
@@ -116,38 +110,40 @@ postContainer.innerHTML += `
 <div class="post__footer">
     <div class="likes js-likes">
         <div class="likes__cta">
-            <a class="like-button  js-like-button" href="#" data-postid="${posts[i].id}">
+            <a class="like-button  js-like-button"  data-postid="${posts[i].id}">
                 <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                 <span class="like-button__label">Mi Piace</span>
             </a>
         </div>
         <div class="likes__counter">
-            Piace a <b id="like-counter-1" class="js-likes-counter">${posts[i].likes}</b> persone
+            Piace a <b id="like-counter-${posts[i].id}" class="js-likes-counter">${posts[i].likes}</b> persone
         </div>
     </div> 
 </div>            
 </div>
 
 </div>
-
 `
 }
 
-let like = document.querySelector(".like-button");
-let pollice = document.querySelector(".like-button__icon");
-let miPiace = document.querySelector(".like-button__label");
+let like = document.querySelectorAll(".like-button");
+let pollice = document.querySelectorAll(".like-button__icon");
+let miPiace = document.querySelectorAll(".like-button__label");
+let counter = document.querySelectorAll(".js-likes-counter");
 
+for(let i=0; i < like.length ; i++){
 
-for(let i=0; i < posts.length ; i++){
+    like[i].addEventListener('click', function() {
 
-    like.addEventListener('click', function() {
-
-        pollice.classList.add("like-button--liked");
-        miPiace.classList.add("like-button--liked");
+        pollice[i].classList.add("like-button--liked");
+        miPiace[i].classList.add("like-button--liked");
+        counter[i].innerHTML = (parseInt((posts[i].likes+1)));
      
     })
      
 }
+
+
 
 
 
