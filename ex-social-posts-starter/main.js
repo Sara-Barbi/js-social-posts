@@ -142,6 +142,14 @@ for(let i=0; i < like.length ; i++){
 
         newArr.push(posts[i].id);
      
+        like[i].addEventListener('click', function() {
+            pollice[i].classList.remove("like-button--liked");
+            miPiace[i].classList.remove("like-button--liked");
+            counter[i].innerHTML = (parseInt((posts[i].likes)));
+           
+            newArr.splice(posts[i].id);
+            
+        })
         console.log(newArr);
     })
      
