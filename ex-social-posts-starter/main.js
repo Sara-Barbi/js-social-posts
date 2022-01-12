@@ -124,6 +124,8 @@ postContainer.innerHTML += `
 
 </div>
 `
+
+
 }
 
 let newArr = [];
@@ -135,27 +137,25 @@ let counter = document.querySelectorAll(".js-likes-counter");
 for(let i=0; i < like.length ; i++){
 
     like[i].addEventListener('click', function() {
+        
+        if(!pollice[i].classList.contains("like-button--liked")){      //importante contains
+           
+            pollice[i].classList.add("like-button--liked");
+            miPiace[i].classList.add("like-button--liked");
+            counter[i].innerHTML = (parseInt((posts[i].likes+1)));
+    
+            newArr.push(posts[i].id);
 
-        pollice[i].classList.add("like-button--liked");
-        miPiace[i].classList.add("like-button--liked");
-        counter[i].innerHTML = (parseInt((posts[i].likes+1)));
-
-        newArr.push(posts[i].id);
-     
-        like[i].addEventListener('click', function() {
+        }else{
             pollice[i].classList.remove("like-button--liked");
             miPiace[i].classList.remove("like-button--liked");
             counter[i].innerHTML = (parseInt((posts[i].likes)));
-           
-            newArr.splice(posts[i].id);
-            
-        })
+      
+             
+      }
+ 
         console.log(newArr);
     })
      
 }
-
-
-
-
-
+     
